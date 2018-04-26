@@ -9,32 +9,30 @@ public class MergeSort {
 		//sortDescending();
 	}
 	private static void sortAscending() {
-
 		int ar []= new int []{9,5,8,4,7,6};
-		
-		ar = new int []{9,8,7,6,5,4};
+		//ar = new int []{9,8,7,6,5,4,3};
 //		ar = new int []{4,5,6,7,8,9};
 		subArr = new int[ar.length];
 		merge(ar,0,ar.length-1);
-		//System.out.println("Countstep="+countStep);
+		System.out.println("Countstep="+countStep);
 	}
 	private static void merge(int a[],int start, int end) {
-		//System.out.println("In Merge "+start+":"+end);
 		if(start<end) {
 			int middle = start + (end-start)/2;
+			System.out.println("In Merge "+start+":"+middle+":"+end);
 			merge(a,start, middle);
 			merge(a,(middle+1), end);
 			for(int i:a)
 				System.out.print(i+" ");
-			System.out.println("After sub sorting");
 			mergeGroups(a, start, middle, end);
 		}
 	}
 	private static void mergeGroups(int ar[], int start,int middle, int end) {
 		System.out.println("In merge groups "+start+":"+middle+":"+end);
-		int s = start,k = middle, e = end;
+		int s = start,k = middle+1, e = end;
 		int index = start;
-		while(s < middle && k < e) {
+		int totalNum = end-start;
+		while(s <= middle && k <= e) {
 			if(ar[s]>ar[k]) {
 				subArr[index]=ar[k];
 				k++;
@@ -44,11 +42,25 @@ public class MergeSort {
 			}
 			index++;
 			countStep++;
-			for(int i:subArr)
-				System.out.print("Internal="+i+" ");
-			System.out.println();
 		}
-		for(int i:subArr)
+		//Filling remaining indexes.
+		while(s<=middle || k<=e) {
+			if(s <= middle) {
+				subArr[index]=ar[s];
+				s++;
+			}
+			if(k<=e) {
+				subArr[index]=ar[k];
+				k++;
+			}
+			index++;
+		}
+		for(int i=0;i<=totalNum;i++) {
+			//System.out.print(subArr[start+i]+" ");
+			ar[start+i]=subArr[start+i];
+		}
+		//System.out.println();
+		for(int i:ar)
 			System.out.print(i+" ");
 		System.out.println();
 		System.out.println("--------------");
