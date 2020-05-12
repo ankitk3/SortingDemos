@@ -52,6 +52,22 @@ public class May12Problem {
         return -1;
     }
 
+    /**
+     * Another XOR approach, this take more time then above.
+     * @param ar
+     * @param ar_size
+     * @return
+     */
+    private int findSingle(int ar[])
+    {
+        int ar_size = ar.length;
+        // Do XOR of all elements and return
+        int res = ar[0];
+        for (int i = 1; i < ar_size; i++)
+            res = res ^ ar[i];
+
+        return res;
+    }
     public static void main(String[] args) {
         May12Problem obj = new May12Problem();
         int [] input = {1,1,2,2,4,4,5,8,8};
