@@ -16,7 +16,7 @@ public class Print2DSortedArray {
 		//int i=0, j=0, rowLength = mat.length,colLength = mat[0].length;
 		int aa=0;
 		while(aa < pointers.length || pointers[aa]<mat[aa].length) {//(i < rowLength || j < colLength) {
-			//int smallest = Integer.MAX_VALUE;
+			int smallest = Integer.MAX_VALUE;
 			for(aa=0;aa < pointers.length-1;aa++) {
 				if(pointers[aa] < mat[aa].length && mat[aa][pointers[aa+1]] < mat[aa+1][pointers[aa+1]]) {
 					System.out.println(mat[aa][pointers[aa]]);

@@ -1,11 +1,7 @@
 package com.ankit.problems;
 
-import java.util.LinkedList;
-import java.util.Queue;
-
 public class DFSTraverseTree {
 
-	//private Queue<Node> queue = new LinkedList<>();
 	static class Node{
 		int value;
 		Node left;

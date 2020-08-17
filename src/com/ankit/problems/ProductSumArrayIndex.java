@@ -1,5 +1,10 @@
 package com.ankit.problems;
 
+/**
+ * Replace every index with product of i-1 and sum of i+1 
+ * @author ankit
+ *
+ */
 public class ProductSumArrayIndex {
 
 	public static void main(String[] args) {

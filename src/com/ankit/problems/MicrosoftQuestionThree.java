@@ -1,5 +1,7 @@
 package com.ankit.problems;
 
+import java.util.HashMap;
+
 /**
  * Create a map with LinkedHashMap like functionality, in which we need to maintain access order
  * We need to print all keys in insertion order
@@ -12,6 +14,9 @@ public class MicrosoftQuestionThree {
         Entry next; // this will keep a reference of next entry
         Entry previous;
 
+        public Entry(){
+
+        }
         public Entry(Object key, Object value, Entry next, Entry previous) {
             this.key = key;
             this.value = value;
@@ -19,15 +24,15 @@ public class MicrosoftQuestionThree {
             this.previous = previous;
         }
     }
-    static class CustomizedMap extends HashMap<K,V>{
-        private Entry root;
-        private Entry tail;
-        public void put(Object key, Object value){
+    static class CustomizedMap extends HashMap {
+        private MicrosoftQuestionThree.Entry root;
+        private MicrosoftQuestionThree.Entry tail;
+        public void putValue(Object key, Object value){
             if(root == null){
-                root = new Entry(key, value, null, null);//if root is empty put the first value
+                root = new MicrosoftQuestionThree.Entry(key, value, null, null);//if root is empty put the first value
                 tail = root;
             } else{
-                Entry node = new Entry();
+                MicrosoftQuestionThree.Entry node = new MicrosoftQuestionThree.Entry();
                 node.key = key;
                 node.value = value;
                 tail.next = node;
@@ -43,9 +48,9 @@ public class MicrosoftQuestionThree {
         private void putEntry(Object key, Object value) {
         }
 
-        public void remove(Object key){
-            Entry currentNode = getEntry(key); // Assuming this will provide entry by key
-            Entry previous = currentNode.previous;
+        public void removeValue(Object key){
+            MicrosoftQuestionThree.Entry currentNode = getEntry(key); // Assuming this will provide entry by key
+            MicrosoftQuestionThree.Entry previous = currentNode.previous;
             previous.next = currentNode.next;
             currentNode.previous = previous;
             removeEntry(key);
@@ -56,8 +61,8 @@ public class MicrosoftQuestionThree {
         }
 
         //Assuming it returns entry by given key
-        private Entry getEntry(Object key) {
-            return new Entry();
+        private MicrosoftQuestionThree.Entry getEntry(Object key) {
+            return new MicrosoftQuestionThree.Entry();
         }
 
         public void printKey(){
